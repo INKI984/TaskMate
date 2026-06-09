@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TaskMate</string>
+
+    <!-- Нотификации -->
+    <string name="notification_channel_name">Општи нотификации</string>
+    <string name="notification_channel_desc">Потсетници и новости од TaskMate</string>
+
+    <!-- Најава -->
+    <string name="login_title">Добредојде во TaskMate</string>
+    <string name="login_subtitle">Организирај го денот, задача по задача.</string>
+    <string name="hint_email">Е-пошта</string>
+    <string name="hint_password">Лозинка</string>
+    <string name="btn_login">Најави се</string>
+    <string name="btn_register">Креирај сметка</string>
+    <string name="btn_anonymous">Продолжи како гостин</string>
+    <string name="btn_google">Најава со Google</string>
+    <string name="or_divider">или</string>
+
+    <!-- Грешки при најава -->
+    <string name="error_invalid_credentials">Внеси валидна е-пошта и лозинка од најмалку 6 знаци.</string>
+    <string name="error_login">Најавата не успеа.</string>
+    <string name="error_register">Регистрацијата не успеа.</string>
+    <string name="error_google_signin">Најавата со Google не успеа.</string>
+    <string name="error_facebook_signin">Најавата со Facebook не успеа.</string>
+
+    <!-- Листа на задачи -->
+    <string name="title_tasks">Мои задачи</string>
+    <string name="empty_tasks_title">Сè уште нема задачи</string>
+    <string name="empty_tasks_subtitle">Допри го копчето + за да додадеш прва задача.</string>
+    <string name="fab_add_desc">Додај задача</string>
+    <string name="task_deleted">Задачата е избришана</string>
+    <string name="undo">ВРАТИ</string>
+    <string name="checkbox_desc">Означи како завршено</string>
+
+    <!-- Додавање / изменување -->
+    <string name="title_add_task">Нова задача</string>
+    <string name="title_edit_task">Измени задача</string>
+    <string name="hint_title">Наслов</string>
+    <string name="hint_description">Опис (опционо)</string>
+    <string name="hint_due_date">Краен рок (опционо)</string>
+    <string name="label_priority">Приоритет</string>
+    <string name="priority_low">Низок</string>
+    <string name="priority_medium">Среден</string>
+    <string name="priority_high">Висок</string>
+    <string name="btn_save">Зачувај</string>
+    <string name="task_saved">Задачата е зачувана</string>
+    <string name="error_title_required">Насловот е задолжителен</string>
+
+    <!-- Профил -->
+    <string name="title_profile">Профил</string>
+    <string name="btn_sign_out">Одјави се</string>
+    <string name="anonymous_user">Гостин корисник</string>
+    <string name="unknown_user">Непознат корисник</string>
+    <string name="user_id_label">ИД: %1$s</string>
+    <string name="open_tasks_count">%1$d отворени задачи</string>
+
+    <!-- Поставки -->
+    <string name="title_settings">Поставки</string>
+    <string name="label_language">Јазик</string>
+    <string name="lang_english">Англиски (English)</string>
+    <string name="lang_macedonian">Македонски</string>
+    <string name="label_theme">Изглед</string>
+    <string name="dark_mode">Темен режим</string>
+    <string name="version_label">Верзија %1$s</string>
+
+    <!-- Долна навигација -->
+    <string name="nav_tasks">Задачи</string>
+    <string name="nav_profile">Профил</string>
+    <string name="nav_settings">Поставки</string>
+</resources>

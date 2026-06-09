@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "18053669856",
+    "project_id": "taskmate-1c690",
+    "storage_bucket": "taskmate-1c690.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18053669856:android:5692840659010b17c54185",
+        "android_client_info": {
+          "package_name": "com.taskmate.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18053669856-o55jnp4e31l3cb1h8kued3vtcup0i5ht.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.taskmate.app",
+            "certificate_hash": "f881f179b850b50835b711dc94ec7916702b59f0"
+          }
+        },
+        {
+          "client_id": "18053669856-tfo4bs24o9kc0lhce7nsm211jv4a1212.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTgwPtzB4nW24WKVrymSfyuTIbXDnMQKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18053669856-tfo4bs24o9kc0lhce7nsm211jv4a1212.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

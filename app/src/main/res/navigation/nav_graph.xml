@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/taskListFragment">
+
+    <fragment
+        android:id="@+id/taskListFragment"
+        android:name="com.taskmate.app.ui.main.TaskListFragment"
+        android:label="@string/title_tasks"
+        tools:layout="@layout/fragment_task_list">
+        <action
+            android:id="@+id/action_taskList_to_addEdit"
+            app:destination="@id/addEditTaskFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addEditTaskFragment"
+        android:name="com.taskmate.app.ui.detail.AddEditTaskFragment"
+        android:label="@string/title_add_task"
+        tools:layout="@layout/fragment_add_edit" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.taskmate.app.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.taskmate.app.ui.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
+
+</navigation>

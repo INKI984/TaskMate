@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TaskMate</string>
+
+    <!-- Notifications -->
+    <string name="default_notification_channel_id">taskmate_default_channel</string>
+    <string name="notification_channel_name">General notifications</string>
+    <string name="notification_channel_desc">Reminders and updates from TaskMate</string>
+
+    <!-- Login -->
+    <string name="login_title">Welcome to TaskMate</string>
+    <string name="login_subtitle">Organize your day, one task at a time.</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_login">Sign in</string>
+    <string name="btn_register">Create account</string>
+    <string name="btn_anonymous">Continue as guest</string>
+    <string name="btn_google">Sign in with Google</string>
+    <string name="btn_facebook">Sign in with Facebook</string>
+    <string name="or_divider">or</string>
+
+    <!-- Login errors -->
+    <string name="error_invalid_credentials">Enter a valid email and a password of at least 6 characters.</string>
+    <string name="error_login">Sign in failed.</string>
+    <string name="error_register">Registration failed.</string>
+    <string name="error_google_signin">Google sign in failed.</string>
+    <string name="error_facebook_signin">Facebook sign in failed.</string>
+
+    <!-- Task list -->
+    <string name="title_tasks">My Tasks</string>
+    <string name="empty_tasks_title">No tasks yet</string>
+    <string name="empty_tasks_subtitle">Tap the + button to add your first task.</string>
+    <string name="fab_add_desc">Add task</string>
+    <string name="task_deleted">Task deleted</string>
+    <string name="undo">UNDO</string>
+    <string name="checkbox_desc">Mark as done</string>
+
+    <!-- Add / edit -->
+    <string name="title_add_task">New task</string>
+    <string name="title_edit_task">Edit task</string>
+    <string name="hint_title">Title</string>
+    <string name="hint_description">Description (optional)</string>
+    <string name="hint_due_date">Due date (optional)</string>
+    <string name="label_priority">Priority</string>
+    <string name="priority_low">Low</string>
+    <string name="priority_medium">Medium</string>
+    <string name="priority_high">High</string>
+    <string name="btn_save">Save</string>
+    <string name="task_saved">Task saved</string>
+    <string name="error_title_required">Title is required</string>
+
+    <!-- Profile -->
+    <string name="title_profile">Profile</string>
+    <string name="btn_sign_out">Sign out</string>
+    <string name="anonymous_user">Guest user</string>
+    <string name="unknown_user">Unknown user</string>
+    <string name="user_id_label">ID: %1$s</string>
+    <string name="open_tasks_count">%1$d open tasks</string>
+
+    <!-- Settings -->
+    <string name="title_settings">Settings</string>
+    <string name="label_language">Language</string>
+    <string name="lang_english">English</string>
+    <string name="lang_macedonian">Macedonian (Македонски)</string>
+    <string name="label_theme">Appearance</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="version_label">Version %1$s</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_tasks">Tasks</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_settings">Settings</string>
+
+    <string name="facebook_app_id" translatable="false">000000000000000</string>
+    <string name="facebook_client_token" translatable="false">PLACEHOLDER_CLIENT_TOKEN</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb000000000000000</string>
+</resources>

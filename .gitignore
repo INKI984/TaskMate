@@ -1,0 +1,28 @@
+# Изградени фајлови / build outputs
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build/
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# Модулски build папки
+app/build/
+build/
+
+# Кеш / лог
+*.log
+
+# Keystore (НЕ ги објавувајте приватните клучеви!)
+*.jks
+*.keystore
+
+# ВАЖНО: google-services.json содржи клучеви на вашиот Firebase проект.
+# Овде е оставен PLACEHOLDER за да се компајлира проектот. За вашиот личен
+# проект, заменете го со вашиот фајл. Ако сакате да го сокриете од Git,
+# отстранете ја долната линија со коментар и додадете го фајлот тука:
+# app/google-services.json
