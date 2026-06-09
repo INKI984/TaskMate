@@ -7,6 +7,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -38,6 +39,7 @@ class TaskListFragment : Fragment() {
 
     private var currentSort = SortMode.CREATED
     private var latestTasks: List<Task> = emptyList()
+    private var currentQuery: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -69,8 +71,7 @@ class TaskListFragment : Fragment() {
 
         viewModel.tasks.observe(viewLifecycleOwner) { tasks ->
             latestTasks = tasks
-            adapter.submitList(sortedList(tasks))
-            binding.emptyView.visibility = if (tasks.isEmpty()) View.VISIBLE else View.GONE
+            resubmit()
         }
 
         binding.fabAdd.setOnClickListener {
@@ -84,6 +85,17 @@ class TaskListFragment : Fragment() {
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
                 inflater.inflate(R.menu.task_list_menu, menu)
+
+                val searchView = menu.findItem(R.id.action_search).actionView as SearchView
+                searchView.queryHint = getString(R.string.search_hint)
+                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String?): Boolean = false
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        currentQuery = newText.orEmpty()
+                        resubmit()
+                        return true
+                    }
+                })
             }
 
             override fun onMenuItemSelected(item: MenuItem): Boolean = when (item.itemId) {
@@ -95,6 +107,13 @@ class TaskListFragment : Fragment() {
         }, viewLifecycleOwner)
     }
 
+    private fun filtered(tasks: List<Task>): List<Task> =
+        if (currentQuery.isBlank()) tasks
+        else tasks.filter {
+            it.title.contains(currentQuery, ignoreCase = true) ||
+                    it.description.contains(currentQuery, ignoreCase = true)
+        }
+
     private fun sortedList(tasks: List<Task>): List<Task> = when (currentSort) {
         SortMode.PRIORITY -> tasks.sortedByDescending { it.priority }
         SortMode.DUE_DATE -> tasks.sortedWith(compareBy(nullsLast<Long>()) { it.dueDate })
@@ -102,7 +121,9 @@ class TaskListFragment : Fragment() {
     }
 
     private fun resubmit() {
-        adapter.submitList(sortedList(latestTasks))
+        val display = sortedList(filtered(latestTasks))
+        adapter.submitList(display)
+        binding.emptyView.visibility = if (display.isEmpty()) View.VISIBLE else View.GONE
     }
 
     private fun setupSwipeToDelete() {

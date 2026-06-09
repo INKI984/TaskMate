@@ -80,4 +80,6 @@
     <string name="sort_by_due_date">By due date</string>
     <string name="sort_by_created">By date added</string>
 
+    <string name="search_hint">Search tasks…</string>
+
 </resources>

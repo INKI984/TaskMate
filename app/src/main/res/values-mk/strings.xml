@@ -74,4 +74,6 @@
     <string name="sort_by_due_date">По рок</string>
     <string name="sort_by_created">По време на додавање</string>
 
+    <string name="search_hint">Пребарај задачи…</string>
+
 </resources>
