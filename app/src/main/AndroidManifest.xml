@@ -21,7 +21,7 @@
         <activity
             android:name=".ui.auth.LoginActivity"
             android:exported="true"
-            android:theme="@style/Theme.TaskMate">
+            android:theme="@style/Theme.TaskMate.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -50,6 +50,8 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_notification" />
+
+        <!-- Facebook Login конфигурација -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />

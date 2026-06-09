@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
@@ -56,6 +57,7 @@ class LoginActivity : BaseActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -80,8 +82,6 @@ class LoginActivity : BaseActivity() {
                 googleLauncher.launch(client.signInIntent)
             }
         } else {
-            // Google не е конфигуриран — копчето сепак се прикажува (за УИ),
-            // а кликот само прикажува порака наместо да се обиде со најава.
             binding.btnGoogle.setOnClickListener {
                 showError(getString(R.string.error_google_signin))
             }
@@ -159,9 +159,6 @@ class LoginActivity : BaseActivity() {
 
     private fun setupFacebookLogin() {
         val appId = getString(R.string.facebook_app_id)
-        // Копчето СЕКОГАШ се прикажува (потребно за УИ). Ако FB сè уште не е
-        // конфигуриран (placeholder App ID), кликот само прикажува порака
-        // наместо да се обиде со најава — за да не падне апликацијата.
         if (appId.startsWith("000000")) {
             binding.btnFacebook.setOnClickListener {
                 showError(getString(R.string.error_facebook_signin))
