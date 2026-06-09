@@ -1,15 +1,26 @@
 package com.taskmate.app.ui
 
 import android.content.Context
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import com.taskmate.app.util.LocaleHelper
+import java.util.Locale
 
-/**
- * Заедничка база за сите Activity — го применува избраниот јазик
- * пред да се прикаже било кој изглед.
- */
 abstract class BaseActivity : AppCompatActivity() {
+
+    private var savedBase: Context? = null
+
     override fun attachBaseContext(newBase: Context) {
-        super.attachBaseContext(LocaleHelper.applyLanguage(newBase))
+        savedBase = newBase
+        super.attachBaseContext(newBase)
+    }
+
+    override fun applyOverrideConfiguration(overrideConfiguration: Configuration?) {
+        val base = savedBase
+        if (overrideConfiguration != null && base != null) {
+            val language = LocaleHelper.getPersistedLanguage(base)
+            overrideConfiguration.setLocale(Locale(language))
+        }
+        super.applyOverrideConfiguration(overrideConfiguration)
     }
 }

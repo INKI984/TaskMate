@@ -21,7 +21,7 @@
         <activity
             android:name=".ui.auth.LoginActivity"
             android:exported="true"
-            android:theme="@style/Theme.TaskMate.Splash">
+            android:theme="@style/Theme.TaskMate">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

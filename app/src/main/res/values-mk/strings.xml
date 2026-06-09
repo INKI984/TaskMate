@@ -75,5 +75,6 @@
     <string name="sort_by_created">По време на додавање</string>
 
     <string name="search_hint">Пребарај задачи…</string>
+    <string name="reminder_notification_title">Потсетник за задача</string>
 
 </resources>

@@ -16,7 +16,7 @@ class TaskMateApp : Application() {
 
     // Lazy иницијализација на Room базата и репозиториумот.
     val database: AppDatabase by lazy { AppDatabase.getInstance(this) }
-    val repository: TaskRepository by lazy { TaskRepository(database.taskDao()) }
+    val repository: TaskRepository by lazy { TaskRepository(this, database.taskDao()) }
 
     override fun onCreate() {
         super.onCreate()

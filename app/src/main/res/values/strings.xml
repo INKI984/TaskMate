@@ -81,5 +81,6 @@
     <string name="sort_by_created">By date added</string>
 
     <string name="search_hint">Search tasks…</string>
+    <string name="reminder_notification_title">Task reminder</string>
 
 </resources>
