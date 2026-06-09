@@ -74,4 +74,10 @@
     <string name="facebook_app_id" translatable="false">000000000000000</string>
     <string name="facebook_client_token" translatable="false">PLACEHOLDER_CLIENT_TOKEN</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb000000000000000</string>
+
+    <string name="sort">Sort</string>
+    <string name="sort_by_priority">By priority</string>
+    <string name="sort_by_due_date">By due date</string>
+    <string name="sort_by_created">By date added</string>
+
 </resources>

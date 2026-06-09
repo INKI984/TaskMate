@@ -2,8 +2,12 @@ package com.taskmate.app.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -15,6 +19,7 @@ import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.ktx.Firebase
 import com.taskmate.app.R
 import com.taskmate.app.TaskMateApp
+import com.taskmate.app.data.local.Task
 import com.taskmate.app.databinding.FragmentTaskListBinding
 import com.taskmate.app.util.Constants
 
@@ -28,6 +33,11 @@ class TaskListFragment : Fragment() {
     }
 
     private lateinit var adapter: TaskAdapter
+
+    private enum class SortMode { CREATED, PRIORITY, DUE_DATE }
+
+    private var currentSort = SortMode.CREATED
+    private var latestTasks: List<Task> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -55,18 +65,44 @@ class TaskListFragment : Fragment() {
         )
         binding.recyclerView.adapter = adapter
 
-        // Набљудувај ги задачите од Room (преку ViewModel)
+        setupSortMenu()
+
         viewModel.tasks.observe(viewLifecycleOwner) { tasks ->
-            adapter.submitList(tasks)
+            latestTasks = tasks
+            adapter.submitList(sortedList(tasks))
             binding.emptyView.visibility = if (tasks.isEmpty()) View.VISIBLE else View.GONE
         }
 
-        // FAB → нова задача
         binding.fabAdd.setOnClickListener {
             findNavController().navigate(R.id.action_taskList_to_addEdit)
         }
 
         setupSwipeToDelete()
+    }
+
+    private fun setupSortMenu() {
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, inflater: MenuInflater) {
+                inflater.inflate(R.menu.task_list_menu, menu)
+            }
+
+            override fun onMenuItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+                R.id.sort_priority -> { currentSort = SortMode.PRIORITY; resubmit(); true }
+                R.id.sort_due -> { currentSort = SortMode.DUE_DATE; resubmit(); true }
+                R.id.sort_created -> { currentSort = SortMode.CREATED; resubmit(); true }
+                else -> false
+            }
+        }, viewLifecycleOwner)
+    }
+
+    private fun sortedList(tasks: List<Task>): List<Task> = when (currentSort) {
+        SortMode.PRIORITY -> tasks.sortedByDescending { it.priority }
+        SortMode.DUE_DATE -> tasks.sortedWith(compareBy(nullsLast<Long>()) { it.dueDate })
+        SortMode.CREATED -> tasks.sortedByDescending { it.createdAt }
+    }
+
+    private fun resubmit() {
+        adapter.submitList(sortedList(latestTasks))
     }
 
     private fun setupSwipeToDelete() {

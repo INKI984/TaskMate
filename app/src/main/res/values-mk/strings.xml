@@ -68,4 +68,10 @@
     <string name="nav_tasks">Задачи</string>
     <string name="nav_profile">Профил</string>
     <string name="nav_settings">Поставки</string>
+
+    <string name="sort">Подреди</string>
+    <string name="sort_by_priority">По приоритет</string>
+    <string name="sort_by_due_date">По рок</string>
+    <string name="sort_by_created">По време на додавање</string>
+
 </resources>
