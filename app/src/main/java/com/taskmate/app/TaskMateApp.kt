@@ -5,8 +5,11 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import com.taskmate.app.data.local.AppDatabase
 import com.taskmate.app.data.repository.TaskRepository
+import com.taskmate.app.util.Constants
 
 /**
  * Application класа — едноставен service locator за репозиториумот
@@ -21,6 +24,13 @@ class TaskMateApp : Application() {
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
+
+        // Стандарден јазик: македонски (ако корисникот сè уште нема избрано)
+        if (AppCompatDelegate.getApplicationLocales().isEmpty) {
+            AppCompatDelegate.setApplicationLocales(
+                LocaleListCompat.forLanguageTags(Constants.LANG_MK)
+            )
+        }
     }
 
     private fun createNotificationChannel() {

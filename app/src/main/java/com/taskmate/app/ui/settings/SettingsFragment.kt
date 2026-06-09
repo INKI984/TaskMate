@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
 import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.analytics.ktx.logEvent
@@ -12,7 +13,6 @@ import com.google.firebase.ktx.Firebase
 import com.taskmate.app.R
 import com.taskmate.app.databinding.FragmentSettingsBinding
 import com.taskmate.app.util.Constants
-import com.taskmate.app.util.LocaleHelper
 
 class SettingsFragment : Fragment() {
 
@@ -29,21 +29,25 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Тековен јазик
-        when (LocaleHelper.getPersistedLanguage(requireContext())) {
-            Constants.LANG_EN -> binding.radioEnglish.isChecked = true
-            else -> binding.radioMacedonian.isChecked = true
+        // Тековен јазик од per-app locales
+        val currentTag = AppCompatDelegate.getApplicationLocales().toLanguageTags()
+        if (currentTag.startsWith(Constants.LANG_EN)) {
+            binding.radioEnglish.isChecked = true
+        } else {
+            binding.radioMacedonian.isChecked = true
         }
 
         binding.radioGroupLanguage.setOnCheckedChangeListener { _, checkedId ->
             val lang = if (checkedId == R.id.radioEnglish) Constants.LANG_EN else Constants.LANG_MK
-            if (lang != LocaleHelper.getPersistedLanguage(requireContext())) {
-                LocaleHelper.setLanguage(requireContext(), lang)
+            val current = AppCompatDelegate.getApplicationLocales().toLanguageTags()
+            if (!current.startsWith(lang)) {
                 Firebase.analytics.logEvent(Constants.EVENT_LANGUAGE_CHANGED) {
                     param("language", lang)
                 }
-                // Повторно креирај ја Activity за да се примени новиот јазик
-                requireActivity().recreate()
+                // Го применува јазикот и автоматски ги рекреира екраните
+                AppCompatDelegate.setApplicationLocales(
+                    LocaleListCompat.forLanguageTags(lang)
+                )
             }
         }
 
